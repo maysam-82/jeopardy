@@ -21,7 +21,6 @@ export const getCategories = () => (dispatch: Dispatch) => {
 
 	getDataFromAPI<ICategory>('https://jservice.io/api/categories?count=20')
 		.then((response) => {
-			console.log(response);
 			dispatch<IFetchCategoriesSucceeded>(
 				fetchCategoriesSucceeded(response as ICategory[])
 			);
