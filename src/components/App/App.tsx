@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getCategories } from '../../redux/actions/categories';
 
-const App = () => {
-	return <div className="container">App</div>;
-};
+export interface IAppProps {
+	getCategories: Function;
+}
 
-export default App;
+export class App extends Component<IAppProps, {}> {
+	componentDidMount() {
+		this.props.getCategories();
+	}
+	render() {
+		return <div className="container">App</div>;
+	}
+}
+
+export default connect(null, { getCategories })(App);
