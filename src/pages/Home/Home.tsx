@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListGroup, Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import { ICategory } from '../../types/category.d';
 import { IStoreState } from '../../redux/reducers/index';
 import { getCategories, setCategory } from '../../redux/actions/categories';
 import history from '../../history';
+import Categories from '../../components/Categories/Categories';
 
 export interface ICategoryProps {
 	getCategories: Function;
@@ -28,28 +29,20 @@ export class Home extends React.Component<ICategoryProps, {}> {
 			history.push('/category');
 		}
 	};
+
 	render() {
-		const { categories, isFetching } = this.props;
+		const { isFetching, categories } = this.props;
 		return (
 			<div>
 				{isFetching ? (
 					<div className="spinner">
-						<Spinner animation="border" role="status" variant="info" />
+						<Spinner animation="border" role="status" variant="secondary" />
 					</div>
 				) : (
-					<ListGroup>
-						{categories.map(({ id, title }) => {
-							return (
-								<ListGroup.Item
-									key={id}
-									action
-									onClick={() => this.categoryClickHandler(id)}
-								>
-									{title}
-								</ListGroup.Item>
-							);
-						})}
-					</ListGroup>
+					<Categories
+						categories={categories}
+						categoryClick={this.categoryClickHandler}
+					/>
 				)}
 			</div>
 		);
