@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { ActionTypes } from './index';
-import { ICategory } from '../../types/category';
+import { ICategory, ISelectedCategory } from '../../types/category.d';
 import { getDataFromAPI } from '../../services/api';
 
 export interface IFetchCategoriesStarted {
@@ -14,6 +14,24 @@ export interface IFetchCategoriesFailed {
 export interface IFetchCategoriesSucceeded {
 	type: ActionTypes.fetchCategoriesSucceeded;
 	payload: ICategory[];
+}
+
+export interface IFetchCategoryStarted {
+	type: ActionTypes.fetchCategoryStarted;
+}
+
+export interface IFetchCategoryFailed {
+	type: ActionTypes.fetchCategoryFailed;
+}
+
+export interface IFetchCategorySucceeded {
+	type: ActionTypes.fetchCategorySucceeded;
+	payload: ISelectedCategory[];
+}
+
+export interface ISetCategory {
+	type: ActionTypes.setCategory;
+	payload: ICategory;
 }
 
 export const getCategories = () => (dispatch: Dispatch) => {
@@ -33,11 +51,55 @@ export const getCategories = () => (dispatch: Dispatch) => {
 export const fetchCategoriesStarted = (): IFetchCategoriesStarted => {
 	return { type: ActionTypes.fetchCategoriesStarted };
 };
+
 export const fetchCategoriesFailed = (): IFetchCategoriesFailed => {
 	return { type: ActionTypes.fetchCategoriesFailed };
 };
+
 export const fetchCategoriesSucceeded = (
 	categories: ICategory[]
 ): IFetchCategoriesSucceeded => {
 	return { type: ActionTypes.fetchCategoriesSucceeded, payload: categories };
+};
+
+export const fetchCategoryStarted = (): IFetchCategoryStarted => {
+	return { type: ActionTypes.fetchCategoryStarted };
+};
+
+export const fetchCategoryFailed = (): IFetchCategoryFailed => {
+	return { type: ActionTypes.fetchCategoryFailed };
+};
+
+export const fetchCategorySucceeded = (
+	selectedCategoryData: ISelectedCategory[]
+): IFetchCategorySucceeded => {
+	return {
+		type: ActionTypes.fetchCategorySucceeded,
+		payload: selectedCategoryData,
+	};
+};
+
+export const setCategory = (category: ICategory): ISetCategory => {
+	return {
+		type: ActionTypes.setCategory,
+		payload: category,
+	};
+};
+
+export const getSelectedCategoryData = (selectedCategoryId: number) => (
+	dispatch: Dispatch
+) => {
+	dispatch<IFetchCategoryStarted>(fetchCategoryStarted());
+
+	getDataFromAPI<ISelectedCategory>(
+		`https://jservice.io/api/clues?category=${selectedCategoryId}`
+	)
+		.then((response) => {
+			dispatch<IFetchCategorySucceeded>(
+				fetchCategorySucceeded(response as ISelectedCategory[])
+			);
+		})
+		.catch((error) => {
+			dispatch<IFetchCategoryFailed>(fetchCategoryFailed());
+		});
 };

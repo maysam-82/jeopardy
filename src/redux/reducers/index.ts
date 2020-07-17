@@ -4,9 +4,9 @@ import categoriesReducer, {
 } from './categoriesReducer';
 
 export interface IStoreState {
-	categories: ICategoriesReducerState;
+	category: ICategoriesReducerState;
 }
 
 export const reducers = combineReducers<IStoreState>({
-	categories: categoriesReducer,
+	category: categoriesReducer,
 });
