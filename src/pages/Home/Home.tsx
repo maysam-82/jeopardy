@@ -33,7 +33,7 @@ export class Home extends React.Component<ICategoryProps, {}> {
 	render() {
 		const { isFetching, categories } = this.props;
 		return (
-			<div>
+			<div className="mb-2">
 				{isFetching ? (
 					<div className="spinner">
 						<Spinner animation="border" role="status" variant="secondary" />
