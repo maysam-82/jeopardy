@@ -1,18 +1,18 @@
 import { ActionTypes, CategoriesActions } from '../actions';
-import { ICategory, ISelectedCategory } from '../../types/category.d';
+import { ICategory, IClue } from '../../types/category.d';
 
 export interface ICategoriesReducerState {
 	isFetching: boolean;
 	categories: ICategory[];
 	selectedCategory: ICategory;
-	selectedCategoryData: ISelectedCategory[];
+	clues: IClue[];
 }
 
 const INITIAL_STATE: ICategoriesReducerState = {
 	isFetching: false,
 	categories: [],
 	selectedCategory: {} as ICategory,
-	selectedCategoryData: [],
+	clues: [],
 };
 
 const categoriesReducer = (
@@ -31,7 +31,7 @@ const categoriesReducer = (
 			return {
 				...state,
 				isFetching: false,
-				selectedCategoryData: action.payload,
+				clues: action.payload,
 			};
 
 		case ActionTypes.fetchCategoriesFailed:

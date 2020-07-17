@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
 import { IStoreState } from '../../redux/reducers/index';
-import { ICategory, ISelectedCategory } from '../../types/category.d';
-import { getSelectedCategoryData } from '../../redux/actions/categories';
+import { ICategory, IClue } from '../../types/category.d';
+import { getClues } from '../../redux/actions/categories';
 import history from '../../history';
 
 interface ICategoryProps {
 	selectedCategory: ICategory;
-	selectedCategoryData: ISelectedCategory[];
-	getSelectedCategoryData: Function;
+	clues: IClue[];
+	getClues: Function;
 	isFetching: boolean;
 }
 
@@ -17,10 +17,10 @@ class Category extends React.Component<ICategoryProps> {
 	componentDidMount() {
 		const {
 			selectedCategory: { id },
-			getSelectedCategoryData,
+			getClues,
 		} = this.props;
 		if (id) {
-			getSelectedCategoryData(id);
+			getClues(id);
 		} else {
 			history.push('/');
 		}
@@ -43,8 +43,8 @@ class Category extends React.Component<ICategoryProps> {
 
 const mapStateToProps = (state: IStoreState) => ({
 	selectedCategory: state.category.selectedCategory,
-	selectedCategoryData: state.category.selectedCategoryData,
+	clues: state.category.clues,
 	isFetching: state.category.isFetching,
 });
 
-export default connect(mapStateToProps, { getSelectedCategoryData })(Category);
+export default connect(mapStateToProps, { getClues })(Category);

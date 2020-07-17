@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { ActionTypes } from './index';
-import { ICategory, ISelectedCategory } from '../../types/category.d';
+import { ICategory, IClue } from '../../types/category.d';
 import { getDataFromAPI } from '../../services/api';
 
 export interface IFetchCategoriesStarted {
@@ -26,7 +26,7 @@ export interface IFetchCategoryFailed {
 
 export interface IFetchCategorySucceeded {
 	type: ActionTypes.fetchCategorySucceeded;
-	payload: ISelectedCategory[];
+	payload: IClue[];
 }
 
 export interface ISetCategory {
@@ -71,11 +71,11 @@ export const fetchCategoryFailed = (): IFetchCategoryFailed => {
 };
 
 export const fetchCategorySucceeded = (
-	selectedCategoryData: ISelectedCategory[]
+	clues: IClue[]
 ): IFetchCategorySucceeded => {
 	return {
 		type: ActionTypes.fetchCategorySucceeded,
-		payload: selectedCategoryData,
+		payload: clues,
 	};
 };
 
@@ -86,17 +86,17 @@ export const setCategory = (category: ICategory): ISetCategory => {
 	};
 };
 
-export const getSelectedCategoryData = (selectedCategoryId: number) => (
+export const getClues = (selectedCategoryId: number) => (
 	dispatch: Dispatch
 ) => {
 	dispatch<IFetchCategoryStarted>(fetchCategoryStarted());
 
-	getDataFromAPI<ISelectedCategory>(
+	getDataFromAPI<IClue>(
 		`https://jservice.io/api/clues?category=${selectedCategoryId}`
 	)
 		.then((response) => {
 			dispatch<IFetchCategorySucceeded>(
-				fetchCategorySucceeded(response as ISelectedCategory[])
+				fetchCategorySucceeded(response as IClue[])
 			);
 		})
 		.catch((error) => {

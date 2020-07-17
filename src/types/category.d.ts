@@ -4,7 +4,7 @@ export interface ICategory {
 	clues_count: number;
 }
 
-export interface ISelectedCategory {
+export interface IClue {
 	id: number;
 	answer: string;
 	question: string;
