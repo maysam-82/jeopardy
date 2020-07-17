@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { Router } from 'react-router-dom';
+import history from './history';
 import { reducers } from './redux/reducers';
 import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +22,9 @@ const appStore = createStore(
 
 ReactDOM.render(
 	<Provider store={appStore}>
-		<App />
+		<Router history={history}>
+			<App />
+		</Router>
 	</Provider>,
 	document.querySelector('#root')
 );
