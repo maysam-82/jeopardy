@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getCategories } from '../../redux/actions/categories';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Home from '../../pages/Home';
+import Category from '../../pages/Category';
+import Header from '../Header';
 
-export interface IAppProps {
-	getCategories: Function;
-}
+const App = () => {
+	return (
+		<div className="container">
+			<Header />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route path="/category" component={Category} />
+			</Switch>
+		</div>
+	);
+};
 
-export class App extends Component<IAppProps, {}> {
-	componentDidMount() {
-		this.props.getCategories();
-	}
-	render() {
-		return <div className="container">App</div>;
-	}
-}
-
-export default connect(null, { getCategories })(App);
+export default App;
