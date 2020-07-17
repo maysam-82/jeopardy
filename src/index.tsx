@@ -7,6 +7,7 @@ import { Router } from 'react-router-dom';
 import history from './history';
 import { reducers } from './redux/reducers';
 import App from './components/App';
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 declare global {
