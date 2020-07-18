@@ -4,12 +4,12 @@ import { IStoreState } from '../../redux/reducers/index';
 import { connect } from 'react-redux';
 import Clue from '../Clue/Clue';
 
-interface ICluesProps {
+export interface ICluesProps {
 	clues: IClue[];
 	title: string;
 }
 
-const Clues: React.SFC<ICluesProps> = ({ clues, title }) => {
+export const Clues: React.SFC<ICluesProps> = ({ clues, title }) => {
 	return (
 		<div className="clues">
 			<h4 className="text-center font-weight-bold">{title}</h4>

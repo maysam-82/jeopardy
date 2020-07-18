@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clues component should render Clues component 1`] = `
+<div
+  className="clues"
+>
+  <h4
+    className="text-center font-weight-bold"
+  >
+    test title
+  </h4>
+  <div
+    className="clues-list"
+  >
+    <Clue
+      answer="chores"
+      key="87819"
+      question="They're routine tasks done around the house, & before you go out to play, you'd better do yours"
+      value={200}
+    />
+    <Clue
+      answer="charcoal"
+      key="87825"
+      question="It's the form of carbon your dad probably uses when he fires up the barbecue"
+      value={400}
+    />
+  </div>
+</div>
+`;
