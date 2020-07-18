@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render Header component 1`] = `
+<div
+  className="header pb-2 pt-2 pl-0 pr-0 border-bottom mb-2 font-weight-bold "
+>
+  <Link
+    className="badge badge-secondary p-2"
+    to="/"
+  >
+    Home
+  </Link>
+</div>
+`;
