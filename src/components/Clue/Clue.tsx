@@ -2,13 +2,13 @@ import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import './clue.css';
 
-interface IClueProps {
+export interface IClueProps {
 	answer: string;
 	value: number;
 	question: string;
 }
 
-interface IClueState {
+export interface IClueState {
 	isAnswerVisible: boolean;
 }
 

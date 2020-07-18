@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clue component should render Clue component 1`] = `
+<ListGroup
+  className="mb-2"
+  horizontal={null}
+  variant={null}
+>
+  <ListGroupItem
+    active={false}
+    className="font-weight-bold"
+    disabled={false}
+    variant="secondary"
+  >
+    100
+  </ListGroupItem>
+  <ListGroupItem
+    action={true}
+    active={false}
+    disabled={false}
+    onClick={[Function]}
+    variant="warning"
+  >
+    test question
+  </ListGroupItem>
+  <ListGroupItem
+    active={false}
+    className="answer-hidden"
+    disabled={false}
+    variant="success"
+  >
+    test answer
+  </ListGroupItem>
+</ListGroup>
+`;
