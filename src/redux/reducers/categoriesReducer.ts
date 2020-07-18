@@ -21,13 +21,13 @@ const categoriesReducer = (
 ) => {
 	switch (action.type) {
 		case ActionTypes.fetchCategoriesStarted:
-		case ActionTypes.fetchCategoryStarted:
+		case ActionTypes.fetchCluesStarted:
 			return { ...state, isFetching: true };
 
 		case ActionTypes.fetchCategoriesSucceeded:
 			return { ...state, isFetching: false, categories: action.payload };
 
-		case ActionTypes.fetchCategorySucceeded:
+		case ActionTypes.fetchCluesSucceeded:
 			return {
 				...state,
 				isFetching: false,
@@ -35,8 +35,14 @@ const categoriesReducer = (
 			};
 
 		case ActionTypes.fetchCategoriesFailed:
-		case ActionTypes.fetchCategoryFailed:
-			return { ...state, isFetching: false };
+			return {
+				...state,
+				isFetching: false,
+				categories: [],
+			};
+
+		case ActionTypes.fetchCluesFailed:
+			return { ...state, isFetching: false, clues: [] };
 
 		case ActionTypes.setCategory:
 			const { id, title, clues_count } = action.payload;

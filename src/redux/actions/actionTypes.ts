@@ -2,9 +2,9 @@ import {
 	IFetchCategoriesFailed,
 	IFetchCategoriesSucceeded,
 	IFetchCategoriesStarted,
-	IFetchCategoryFailed,
-	IFetchCategorySucceeded,
-	IFetchCategoryStarted,
+	IFetchCluesFailed,
+	IFetchCluesSucceeded,
+	IFetchCluesStarted,
 	ISetCategory,
 } from './categories';
 export enum ActionTypes {
@@ -13,9 +13,9 @@ export enum ActionTypes {
 	fetchCategoriesSucceeded,
 	fetchCategoriesFailed,
 	getCategory,
-	fetchCategoryStarted,
-	fetchCategorySucceeded,
-	fetchCategoryFailed,
+	fetchCluesStarted,
+	fetchCluesSucceeded,
+	fetchCluesFailed,
 	setCategory,
 }
 
@@ -23,7 +23,7 @@ export type CategoriesActions =
 	| IFetchCategoriesStarted
 	| IFetchCategoriesSucceeded
 	| IFetchCategoriesFailed
-	| IFetchCategoryStarted
-	| IFetchCategorySucceeded
-	| IFetchCategoryFailed
+	| IFetchCluesStarted
+	| IFetchCluesSucceeded
+	| IFetchCluesFailed
 	| ISetCategory;

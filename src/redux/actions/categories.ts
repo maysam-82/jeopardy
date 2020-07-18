@@ -16,16 +16,16 @@ export interface IFetchCategoriesSucceeded {
 	payload: ICategory[];
 }
 
-export interface IFetchCategoryStarted {
-	type: ActionTypes.fetchCategoryStarted;
+export interface IFetchCluesStarted {
+	type: ActionTypes.fetchCluesStarted;
 }
 
-export interface IFetchCategoryFailed {
-	type: ActionTypes.fetchCategoryFailed;
+export interface IFetchCluesFailed {
+	type: ActionTypes.fetchCluesFailed;
 }
 
-export interface IFetchCategorySucceeded {
-	type: ActionTypes.fetchCategorySucceeded;
+export interface IFetchCluesSucceeded {
+	type: ActionTypes.fetchCluesSucceeded;
 	payload: IClue[];
 }
 
@@ -62,19 +62,17 @@ export const fetchCategoriesSucceeded = (
 	return { type: ActionTypes.fetchCategoriesSucceeded, payload: categories };
 };
 
-export const fetchCategoryStarted = (): IFetchCategoryStarted => {
-	return { type: ActionTypes.fetchCategoryStarted };
+export const fetchCluesStarted = (): IFetchCluesStarted => {
+	return { type: ActionTypes.fetchCluesStarted };
 };
 
-export const fetchCategoryFailed = (): IFetchCategoryFailed => {
-	return { type: ActionTypes.fetchCategoryFailed };
+export const fetchCluesFailed = (): IFetchCluesFailed => {
+	return { type: ActionTypes.fetchCluesFailed };
 };
 
-export const fetchCategorySucceeded = (
-	clues: IClue[]
-): IFetchCategorySucceeded => {
+export const fetchCluesSucceeded = (clues: IClue[]): IFetchCluesSucceeded => {
 	return {
-		type: ActionTypes.fetchCategorySucceeded,
+		type: ActionTypes.fetchCluesSucceeded,
 		payload: clues,
 	};
 };
@@ -89,17 +87,15 @@ export const setCategory = (category: ICategory): ISetCategory => {
 export const getClues = (selectedCategoryId: number) => (
 	dispatch: Dispatch
 ) => {
-	dispatch<IFetchCategoryStarted>(fetchCategoryStarted());
+	dispatch<IFetchCluesStarted>(fetchCluesStarted());
 
 	getDataFromAPI<IClue>(
 		`https://jservice.io/api/clues?category=${selectedCategoryId}`
 	)
 		.then((response) => {
-			dispatch<IFetchCategorySucceeded>(
-				fetchCategorySucceeded(response as IClue[])
-			);
+			dispatch<IFetchCluesSucceeded>(fetchCluesSucceeded(response as IClue[]));
 		})
 		.catch((error) => {
-			dispatch<IFetchCategoryFailed>(fetchCategoryFailed());
+			dispatch<IFetchCluesFailed>(fetchCluesFailed());
 		});
 };
