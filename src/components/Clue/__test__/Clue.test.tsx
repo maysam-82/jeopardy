@@ -15,6 +15,9 @@ describe('Clue component', () => {
 	it('should render Clue component', () => {
 		expect(component).toMatchSnapshot();
 	});
+	it('should initialize `isAnswerVisible` in `state` with false value', () => {
+		expect(component.state().isAnswerVisible).toEqual(false);
+	});
 	it('should have `answer` with value of `test answer`', () => {
 		expect(component.find('ListGroupItem').at(2).text()).toEqual(
 			testClueProps.answer
