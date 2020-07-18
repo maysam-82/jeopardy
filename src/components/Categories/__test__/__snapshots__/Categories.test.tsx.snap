@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories component should render Categories 1`] = `
+<ListGroup
+  horizontal={null}
+  variant={null}
+>
+  <ListGroupItem
+    action={true}
+    active={false}
+    disabled={false}
+    key="11531"
+    onClick={[Function]}
+    variant="secondary"
+  >
+    mixed bag
+  </ListGroupItem>
+  <ListGroupItem
+    action={true}
+    active={false}
+    disabled={false}
+    key="11532"
+    onClick={[Function]}
+    variant="secondary"
+  >
+    let's "ch"at
+  </ListGroupItem>
+  <ListGroupItem
+    action={true}
+    active={false}
+    disabled={false}
+    key="5412"
+    onClick={[Function]}
+    variant="secondary"
+  >
+    prehistoric times
+  </ListGroupItem>
+</ListGroup>
+`;
