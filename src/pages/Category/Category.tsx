@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
 import { IStoreState } from '../../redux/reducers/index';
-import { ICategory, IClue } from '../../types/category.d';
+import { ICategory } from '../../types/category.d';
 import { getClues } from '../../redux/actions/categories';
 import history from '../../history';
+import Clues from '../../components/Clues';
 
 interface ICategoryProps {
 	selectedCategory: ICategory;
-	clues: IClue[];
 	getClues: Function;
 	isFetching: boolean;
 }
@@ -34,7 +34,7 @@ class Category extends React.Component<ICategoryProps> {
 						<Spinner animation="border" role="status" variant="info" />
 					</div>
 				) : (
-					<h4>{selectedCategory.title}</h4>
+					<Clues title={selectedCategory.title} />
 				)}
 			</div>
 		);
@@ -43,7 +43,6 @@ class Category extends React.Component<ICategoryProps> {
 
 const mapStateToProps = (state: IStoreState) => ({
 	selectedCategory: state.category.selectedCategory,
-	clues: state.category.clues,
 	isFetching: state.category.isFetching,
 });
 
