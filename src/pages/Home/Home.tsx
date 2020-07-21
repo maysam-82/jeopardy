@@ -7,14 +7,14 @@ import { getCategories, setCategory } from '../../redux/actions/categories';
 import history from '../../history';
 import Categories from '../../components/Categories/Categories';
 
-export interface ICategoryProps {
+export interface IHomeProps {
 	getCategories: Function;
 	categories: ICategory[];
 	setCategory: typeof setCategory;
 	isFetching: boolean;
 }
 
-export class Home extends React.Component<ICategoryProps, {}> {
+export class Home extends React.Component<IHomeProps, {}> {
 	componentDidMount() {
 		const { categories, getCategories } = this.props;
 		if (categories.length === 0) {
