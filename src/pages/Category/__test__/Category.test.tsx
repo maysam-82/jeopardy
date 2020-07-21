@@ -11,28 +11,31 @@ const testCategoryProps: ICategoryProps = {
 };
 
 describe('Category component', () => {
-	let component: ShallowWrapper;
+	const component = shallow(<Category {...testCategoryProps} />);
 
 	it('should render Category component', () => {
 		expect(component).toMatchSnapshot();
+		jest.clearAllMocks();
 	});
 	describe('When there is a `selectedCategory`', () => {
+		let wrapper: ShallowWrapper;
 		beforeEach(() => {
-			component = shallow(<Category {...testCategoryProps} />);
+			wrapper = shallow(<Category {...testCategoryProps} />);
 		});
 		afterEach(() => {
 			jest.clearAllMocks();
+			component.unmount();
 		});
 		it('should call `getClues` function', () => {
 			expect(testCategoryProps.getClues).toHaveBeenCalledTimes(1);
 		});
 		it('should render `Spinner` while fetching', () => {
-			component.setProps({ isFetching: true });
-			expect(component.find('Spinner')).not.toBeNull;
+			wrapper.setProps({ isFetching: true });
+			expect(wrapper.find('Spinner')).not.toBeNull;
 		});
 		it('should not render `Spinner` after fetching', () => {
-			component.setProps({ isFetching: false });
-			expect(component.find('Spinner')).toBeNull;
+			wrapper.setProps({ isFetching: false });
+			expect(wrapper.find('Spinner')).toBeNull;
 		});
 	});
 	describe('When there is not a `selectedCategory`', () => {
@@ -40,7 +43,7 @@ describe('Category component', () => {
 			...testCategoryProps,
 			selectedCategory: {} as ICategory,
 		};
-		component = shallow(<Category {...newProps} />);
+		const componentWithNoData = shallow(<Category {...newProps} />);
 		it('should not call `getClues` function', () => {
 			expect(newProps.getClues).toHaveBeenCalledTimes(0);
 		});
