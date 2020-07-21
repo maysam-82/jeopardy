@@ -2,17 +2,17 @@ import { ICategory, IClue } from '../types/category.d';
 export const testCategories: ICategory[] = [
 	{
 		id: 11531,
-		title: 'mixed bag',
+		title: 'test category 001',
 		clues_count: 5,
 	},
 	{
 		id: 11532,
-		title: 'let\'s "ch"at',
+		title: 'test category 002',
 		clues_count: 5,
 	},
 	{
 		id: 5412,
-		title: 'prehistoric times',
+		title: 'test category 003',
 		clues_count: 10,
 	},
 ];
