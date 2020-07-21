@@ -7,13 +7,13 @@ import { getClues } from '../../redux/actions/categories';
 import history from '../../history';
 import Clues from '../../components/Clues';
 
-interface ICategoryProps {
+export interface ICategoryProps {
 	selectedCategory: ICategory;
 	getClues: Function;
 	isFetching: boolean;
 }
 
-class Category extends React.Component<ICategoryProps> {
+export class Category extends React.Component<ICategoryProps> {
 	componentDidMount() {
 		const {
 			selectedCategory: { id },
