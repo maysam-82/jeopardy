@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page component should render Home page 1`] = `
+<Home
+  categories={
+    Array [
+      Object {
+        "clues_count": 5,
+        "id": 11531,
+        "title": "test category 001",
+      },
+      Object {
+        "clues_count": 5,
+        "id": 11532,
+        "title": "test category 002",
+      },
+      Object {
+        "clues_count": 10,
+        "id": 5412,
+        "title": "test category 003",
+      },
+    ]
+  }
+  getCategories={[MockFunction]}
+  isFetching={false}
+  setCategory={[MockFunction]}
+>
+  <div
+    className="mb-2"
+  >
+    <Categories
+      categories={
+        Array [
+          Object {
+            "clues_count": 5,
+            "id": 11531,
+            "title": "test category 001",
+          },
+          Object {
+            "clues_count": 5,
+            "id": 11532,
+            "title": "test category 002",
+          },
+          Object {
+            "clues_count": 10,
+            "id": 5412,
+            "title": "test category 003",
+          },
+        ]
+      }
+      categoryClick={[Function]}
+    >
+      <ListGroup
+        horizontal={null}
+        variant={null}
+      >
+        <ForwardRef
+          as="div"
+          className="list-group"
+          onSelect={[Function]}
+        >
+          <div
+            className="list-group"
+            onKeyDown={[Function]}
+          >
+            <ListGroupItem
+              action={true}
+              active={false}
+              disabled={false}
+              key="11531"
+              onClick={[Function]}
+              variant="secondary"
+            >
+              <ForwardRef
+                as="button"
+                className="list-group-item list-group-item-secondary list-group-item-action"
+                disabled={false}
+                eventKey={null}
+                onClick={[Function]}
+              >
+                <button
+                  className="list-group-item list-group-item-secondary list-group-item-action"
+                  data-rb-event-key={null}
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  test category 001
+                </button>
+              </ForwardRef>
+            </ListGroupItem>
+            <ListGroupItem
+              action={true}
+              active={false}
+              disabled={false}
+              key="11532"
+              onClick={[Function]}
+              variant="secondary"
+            >
+              <ForwardRef
+                as="button"
+                className="list-group-item list-group-item-secondary list-group-item-action"
+                disabled={false}
+                eventKey={null}
+                onClick={[Function]}
+              >
+                <button
+                  className="list-group-item list-group-item-secondary list-group-item-action"
+                  data-rb-event-key={null}
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  test category 002
+                </button>
+              </ForwardRef>
+            </ListGroupItem>
+            <ListGroupItem
+              action={true}
+              active={false}
+              disabled={false}
+              key="5412"
+              onClick={[Function]}
+              variant="secondary"
+            >
+              <ForwardRef
+                as="button"
+                className="list-group-item list-group-item-secondary list-group-item-action"
+                disabled={false}
+                eventKey={null}
+                onClick={[Function]}
+              >
+                <button
+                  className="list-group-item list-group-item-secondary list-group-item-action"
+                  data-rb-event-key={null}
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  test category 003
+                </button>
+              </ForwardRef>
+            </ListGroupItem>
+          </div>
+        </ForwardRef>
+      </ListGroup>
+    </Categories>
+  </div>
+</Home>
+`;
