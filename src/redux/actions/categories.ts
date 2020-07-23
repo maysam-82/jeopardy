@@ -34,18 +34,18 @@ export interface ISetCategory {
 	payload: ICategory;
 }
 
-export const getCategories = () => (dispatch: Dispatch) => {
+export const getCategories = () => async (dispatch: Dispatch) => {
 	dispatch<IFetchCategoriesStarted>(fetchCategoriesStarted());
-
-	getDataFromAPI<ICategory>('https://jservice.io/api/categories?count=20')
-		.then((response) => {
-			dispatch<IFetchCategoriesSucceeded>(
-				fetchCategoriesSucceeded(response as ICategory[])
-			);
-		})
-		.catch((error) => {
-			dispatch<IFetchCategoriesFailed>(fetchCategoriesFailed());
-		});
+	try {
+		const response = await getDataFromAPI<ICategory>(
+			'https://jservice.io/api/categories?count=20'
+		);
+		dispatch<IFetchCategoriesSucceeded>(
+			fetchCategoriesSucceeded(response as ICategory[])
+		);
+	} catch (error) {
+		dispatch<IFetchCategoriesFailed>(fetchCategoriesFailed());
+	}
 };
 
 export const fetchCategoriesStarted = (): IFetchCategoriesStarted => {
@@ -84,18 +84,16 @@ export const setCategory = (category: ICategory): ISetCategory => {
 	};
 };
 
-export const getClues = (selectedCategoryId: number) => (
+export const getClues = (selectedCategoryId: number) => async (
 	dispatch: Dispatch
 ) => {
 	dispatch<IFetchCluesStarted>(fetchCluesStarted());
-
-	getDataFromAPI<IClue>(
-		`https://jservice.io/api/clues?category=${selectedCategoryId}`
-	)
-		.then((response) => {
-			dispatch<IFetchCluesSucceeded>(fetchCluesSucceeded(response as IClue[]));
-		})
-		.catch((error) => {
-			dispatch<IFetchCluesFailed>(fetchCluesFailed());
-		});
+	try {
+		const response = await getDataFromAPI<IClue>(
+			`https://jservice.io/api/clues?category=${selectedCategoryId}`
+		);
+		dispatch<IFetchCluesSucceeded>(fetchCluesSucceeded(response as IClue[]));
+	} catch (error) {
+		dispatch<IFetchCluesFailed>(fetchCluesFailed());
+	}
 };
