@@ -8,7 +8,7 @@ export interface ICategoriesReducerState {
 	clues: IClue[];
 }
 
-const INITIAL_STATE: ICategoriesReducerState = {
+export const INITIAL_STATE: ICategoriesReducerState = {
 	isFetching: false,
 	categories: [],
 	selectedCategory: {} as ICategory,
